@@ -21,8 +21,8 @@ package org.pavarotti.ui.intf;
  * @author Ovelhas do Presépio
  */
 public interface Viewer {
-    abstract void load();
-    abstract void launch(String[] args) throws Exception;
+    abstract void loadViewer();
+    abstract void launchViewer(String[] args) throws Exception;
     abstract void bindController(Controller controller);
     abstract void showHelp();
     abstract void showAbout();

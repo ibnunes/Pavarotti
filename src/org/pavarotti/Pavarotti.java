@@ -16,6 +16,7 @@
  */
 package org.pavarotti;
 
+import org.pavarotti.ui.intf.*;
 import org.pavarotti.ui.viewer.*;
 import org.pavarotti.ui.controller.*;
 
@@ -26,22 +27,45 @@ import javax.swing.JOptionPane;
  * @author Ovelhas do Presépio
  */
 public class Pavarotti {
-    private static final Version VERSION = new Version(1, 0, 2, Version.Stage.FINAL);
-    private static Application app;
+    private static final Version VERSION = new Version(1, 0, 3, Version.Stage.FINAL);
+    private static Program app;
+    
+    private static Viewer tui = null;
+    private static Viewer gui = null;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         try {
-            app = new Application(VERSION);
-            app.addViewer(new TUI(), "TUI");
-            app.addViewer(new GUI(), "GUI");
+            app = new Program(VERSION);
+            app.addViewer(tui == null ? new TUI() : tui, "TUI");
+            app.addViewer(gui == null ? new GUI() : gui, "GUI");
             app.launch(args);
         } catch (Exception e) {
             String msg = String.format("A fatal error has occurred!\n%s: %s\n", e.getClass(), e.getMessage());
             System.out.println(msg);
             JOptionPane.showMessageDialog( null, msg, "Pavarotti " + VERSION, JOptionPane.ERROR_MESSAGE );
         }
+    }
+    
+    /**
+     * Allows for external launchViewer by JavaFX project
+     * @param args the command line arguments
+     * @param ui the reference to the original project
+     */
+    public static void launchgui(String[] args, Viewer ui) {
+        Pavarotti.gui = ui;
+        main(new String [] {"--mode", "GUI"});
+    }
+    
+    /**
+     * Allows for external launchViewer by Java project
+     * @param args the command line arguments
+     * @param ui the reference to the original project
+     */
+    public static void launchtui(String[] args, Viewer ui) {
+        Pavarotti.tui = ui;
+        main(new String [] {"--mode", "TUI"});
     }
 }

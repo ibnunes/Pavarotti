@@ -31,7 +31,7 @@ import org.pavarotti.core.throwable.*;
  *
  * @author Ovelhas do Presépio
  */
-public class Application extends Controller {
+public class Program extends Controller {
     /**
      * Stores a new viewer and the respective argument that triggers it via command line
      */
@@ -258,7 +258,7 @@ public class Application extends Controller {
      * Constructor of the class
      * @param version the version of the application
      */
-    public Application(Version version) {
+    public Program(Version version) {
         this.currentviewer = null;
         this.viewers       = new ArrayList<>();
         this.version       = version;
@@ -273,7 +273,7 @@ public class Application extends Controller {
      * @param iteration the iteration version of the application
      * @param stage the stage of the application (Alpha, Beta or Final)
      */
-    public Application(int major, int minor, int iteration, Version.Stage stage) {
+    public Program(int major, int minor, int iteration, Version.Stage stage) {
         this.currentviewer = null;
         this.viewers       = new ArrayList<>();
         this.version       = new Version(major, minor, iteration, stage);
@@ -354,12 +354,9 @@ public class Application extends Controller {
         if (this.viewers.isEmpty())
             throw new Exception("No viewers available.");
         if (runArgs(args)) {
-            this.currentviewer.load();
+            this.currentviewer.loadViewer();
             assignFiles();
             checkFilesIntegrity();
-//            if (!this.core.loadAll()) {
-//                this.currentviewer.showError(ERRMSG_LOADALL);
-//            }
             if (!core.loadCompanyInfo())
                 currentviewer.showError("Ficheiro de informação da Companhia corrompido.\n");
             if (!core.loadSingers())
@@ -371,7 +368,7 @@ public class Application extends Controller {
             if (!core.loadPerformances())
                 currentviewer.showError("Ficheiro de espetáculos corrompido.\n");
             
-            this.currentviewer.launch(args);
+            this.currentviewer.launchViewer(args);
         }
     }
     

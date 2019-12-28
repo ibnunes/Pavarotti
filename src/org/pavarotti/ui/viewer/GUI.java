@@ -26,12 +26,12 @@ import org.pavarotti.ui.intf.Controller;
  */
 public class GUI implements Viewer {
     @Override
-    public void load() {
+    public void loadViewer() {
         // TODO
     }
     
     @Override
-    public void launch(String[] args) throws Exception {
+    public void launchViewer(String[] args) throws Exception {
         throw new Exception("Not ready for use.");
         // TODO
     }

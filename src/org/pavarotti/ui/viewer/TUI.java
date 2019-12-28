@@ -49,7 +49,7 @@ public class TUI implements Viewer {
     * Loads all necessary TUI elements and other objects of broad use
     */
     @Override
-    public void load() {
+    public void loadViewer() {
         main = new Menu("MENU PRINCIPAL");
         main.addItem("Gerir staff"       , () -> runMenu(staff));
         main.addItem("Gerir espectaculos", () -> runMenu(shows));
@@ -256,7 +256,7 @@ public class TUI implements Viewer {
      * @throws Exception 
      */
     @Override
-    public void launch(String[] args) throws Exception {
+    public void launchViewer(String[] args) throws Exception {
         this.runMenu(this.main);
         this.controller.stop();
     }
