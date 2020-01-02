@@ -317,6 +317,13 @@ public class Performance implements Serializable {
     }
     
     /**
+     * @return the dancers
+     */
+    public ArrayList<Integer> getDancers() {
+        return this.dancers;
+    }
+    
+    /**
      * @param dancers the dancers to add
      * @return the instance itself
      */
