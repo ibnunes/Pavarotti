@@ -993,6 +993,15 @@ public class Program extends Controller {
         return true;
     }
     
+    @Override
+    public double getPerformancePrice(String ID) {
+        try {
+            return core.getPerformanceByID(ID).getBasePrice();
+        } catch (Exception e) {
+            return 0.;
+        }
+    }
+    
     
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------

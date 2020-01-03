@@ -219,6 +219,16 @@ public class Performance implements Serializable {
     }
     
     /**
+     * @return the base price
+     */
+    public Double getBasePrice() {
+        if (hall.size() > 0)
+            return hall.get(0).getBasePrice();
+        else
+            return 0.;
+    }
+    
+    /**
      * @param when the when
      * @return the index
      */
@@ -400,6 +410,20 @@ public class Performance implements Serializable {
      */
     protected Performance() {
         this.ID              = "";
+        this.name            = "";
+        this.hall            = new ArrayList<>();
+        this.singers         = new ArrayList<>();
+        this.dancers         = new ArrayList<>();
+        this.operadirector   = 0;
+        this.castingdirector = 0;
+    }
+    
+    /**
+     * Constructor of the class
+     * @param ID the ID to set - recommended to have been check with hasID previously if needed
+     */
+    public Performance(String ID) {
+        this.ID              = ID;
         this.name            = "";
         this.hall            = new ArrayList<>();
         this.singers         = new ArrayList<>();

@@ -89,6 +89,7 @@ public abstract class Controller {
     public abstract boolean modifyPerformanceDancers(String ID, ArrayList<Integer> dancers);
     public abstract boolean modifyPerformanceDirectors(String ID, Integer opera, Integer casting);
     public abstract boolean modifyPerformancePrice(String ID, Double price);
+    public abstract double getPerformancePrice(String ID);
     
     // Tickets management
     public abstract Ticket getTicketInfo(String showID, String seat, int index);
