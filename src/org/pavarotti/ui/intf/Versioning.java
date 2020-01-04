@@ -22,7 +22,7 @@ package org.pavarotti.ui.intf;
  */
 public class Versioning {
     public static enum Stage {
-        ALPHA, BETA, FINAL
+        Alpha, Beta, Final
     }
 
     protected int major;

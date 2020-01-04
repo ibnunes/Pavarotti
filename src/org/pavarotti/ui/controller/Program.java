@@ -35,12 +35,12 @@ public class Program extends Controller {
     /**
      * Stores a new viewer and the respective argument that triggers it via command line
      */
-    private class ViewerInfo {
+    public static class ViewerInfo {
         public Viewer viewer;
         public String argument;
         
         public ViewerInfo(Viewer viewer, String argument) {
-            this.viewer = viewer;
+            this.viewer   = viewer;
             this.argument = argument;
         }
     }

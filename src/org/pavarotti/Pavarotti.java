@@ -19,6 +19,7 @@ package org.pavarotti;
 import org.pavarotti.ui.intf.*;
 import org.pavarotti.ui.viewer.*;
 import org.pavarotti.ui.controller.*;
+import org.pavarotti.ui.controller.Program.ViewerInfo;
 
 import javax.swing.JOptionPane;
 
@@ -27,20 +28,27 @@ import javax.swing.JOptionPane;
  * @author Ovelhas do Presépio
  */
 public class Pavarotti {
-    private static final Version VERSION = new Version(1, 0, 3, Version.Stage.FINAL);
+    private static final Version DEFAULT_VERSION = new Version(1, 0, 4, Version.Stage.Final);
     private static Program app;
-    
-    private static Viewer tui = null;
-    private static Viewer gui = null;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        launch(args, DEFAULT_VERSION, new ViewerInfo[] {new ViewerInfo(new TUI(), "TUI")});
+    }
+    
+    /**
+     * Launches the application
+     * @param args the command line arguments
+     * @param VERSION the version of the program
+     * @param viewers the list of viewers to be considered
+     */
+    public static void launch(String args[], final Version VERSION, ViewerInfo viewers[]) {
         try {
             app = new Program(VERSION);
-            app.addViewer(tui == null ? new TUI() : tui, "TUI");
-            app.addViewer(gui == null ? new GUI() : gui, "GUI");
+            for (ViewerInfo v : viewers)
+                app.addViewer(v.viewer, v.argument);
             app.launch(args);
         } catch (Exception e) {
             String msg = String.format("A fatal error has occurred!\n%s: %s\n", e.getClass(), e.getMessage());
@@ -50,22 +58,23 @@ public class Pavarotti {
     }
     
     /**
-     * Allows for external launchViewer by JavaFX project
-     * @param args the command line arguments
-     * @param ui the reference to the original project
+     * Allows for external launch by an external Java/JavaFX project
+     * @param viewer the reference to the original project
+     * @param argument the argument that indicates the launch from this viewer
      */
-    public static void launchgui(String[] args, Viewer ui) {
-        Pavarotti.gui = ui;
-        main(new String [] {"--mode", "GUI"});
+    public static void launchFromExternal(Viewer viewer, String argument) {
+        final ViewerInfo[] VIEWERS = new ViewerInfo[] {new ViewerInfo(viewer, argument)};
+        launch(new String[] {"--mode", argument}, DEFAULT_VERSION, VIEWERS);
     }
     
     /**
-     * Allows for external launchViewer by Java project
-     * @param args the command line arguments
-     * @param ui the reference to the original project
+     * Allows for external launch by an external Java/JavaFX project
+     * @param viewer the reference to the original project
+     * @param argument the argument that indicates the launch from this viewer
+     * @param version the personalized version of the application
      */
-    public static void launchtui(String[] args, Viewer ui) {
-        Pavarotti.tui = ui;
-        main(new String [] {"--mode", "TUI"});
+    public static void launchFromExternal(Viewer viewer, String argument, Version version) {
+        final ViewerInfo[] VIEWERS = new ViewerInfo[] {new ViewerInfo(viewer, argument)};
+        launch(new String[] {"--mode", argument}, version, VIEWERS);
     }
 }

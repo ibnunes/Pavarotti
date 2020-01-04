@@ -28,7 +28,7 @@ public class Version extends Versioning {
      */
     @Override
     public String toString() {
-        return String.format("%d.%d.%d%s", major, minor, iteration, (stage == Versioning.Stage.FINAL) ? "" : ("-" + stage));
+        return String.format("%d.%d.%d%s", major, minor, iteration, (stage == Versioning.Stage.Final) ? "" : ("-" + stage));
     }
 
     /**
@@ -39,9 +39,9 @@ public class Version extends Versioning {
      * @param stage the stage of the application (ALPHA, BETA or FINAL) 
      */
     public Version(int major, int minor, int iteration, Versioning.Stage stage) {
-        this.major = major;
-        this.minor = minor;
+        this.major     = major;
+        this.minor     = minor;
         this.iteration = iteration;
-        this.stage = stage;
+        this.stage     = stage;
     }
 }

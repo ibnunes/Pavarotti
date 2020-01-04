@@ -406,6 +406,17 @@ public class Performance implements Serializable {
     }
     
     /**
+     * @return the total tickets sold
+     */
+    public Integer ticketsSold() {
+        Integer sum = 0;
+        for (ConcertHall h : this.hall) {
+            sum += h.countSold();
+        }
+        return sum;
+    }
+    
+    /**
      * Constructor of the class
      */
     protected Performance() {
