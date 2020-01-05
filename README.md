@@ -11,9 +11,15 @@ Software de gestão de uma Companhia de Ópera.
 
 ## Changelog
 
+### Version 1.0.6 (2020/01/05)
+
+* Clears up messy error messages at first setup.
+
+
 ### Version 1.0.5 (2020/01/04)
 
-* Adds method for emergency stop
+* Adds method for emergency stop.
+
 
 ### Version 1.0.4 (2020/01/04)
 

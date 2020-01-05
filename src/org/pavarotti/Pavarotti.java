@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  * @author Ovelhas do Presépio
  */
 public class Pavarotti {
-    private static final Version DEFAULT_VERSION = new Version(1, 0, 5, Version.Stage.Final);
+    private static final Version DEFAULT_VERSION = new Version(1, 0, 6, Version.Stage.Final);
     private static Program app;
     
     /**

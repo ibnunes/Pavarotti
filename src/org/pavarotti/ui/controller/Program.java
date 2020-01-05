@@ -94,7 +94,7 @@ public class Program extends Controller {
     private static final String FNAME_PERFORMANCES = "perfshow.dat";
     
     private static final String ERRMSG_LOADALL =
-            "Erro a carregar pelo menos um dos ficheiros. Os dados estão corrompidos.\n";
+            "Error loading at least one of the files. The data might be corrupted.\n";
     private static final String ERRMSG_NOID =
             "ID não existe!\n";
     
@@ -122,7 +122,7 @@ public class Program extends Controller {
             return;
         
         if ((flags.checkfile & Company.CHECK_INFO) != Company.CHECK_INFO) {
-            currentviewer.showWarning("O ficheiro de informação da Companhia não existe!\n");
+            // currentviewer.showWarning("O ficheiro de informação da Companhia não existe!\n");
             currentviewer.firstSetup();
             createCompanyInfoFile();
             try {
@@ -135,22 +135,22 @@ public class Program extends Controller {
         }
         
         if ((flags.checkfile & Company.CHECK_SINGERS) != Company.CHECK_SINGERS) {
-            currentviewer.showWarning("O ficheiro de cantores não existe!\n");
+            // currentviewer.showWarning("O ficheiro de cantores não existe!\n");
             createStaffFile(core.singers);
         }
         
         if ((flags.checkfile & Company.CHECK_DANCERS) != Company.CHECK_DANCERS) {
-            currentviewer.showWarning("O ficheiro de dançarinos não existe!\n");
+            // currentviewer.showWarning("O ficheiro de dançarinos não existe!\n");
             createStaffFile(core.dancers);
         }
         
         if ((flags.checkfile & Company.CHECK_DIRECTORS) != Company.CHECK_DIRECTORS) {
-            currentviewer.showWarning("O ficheiro de diretores não existe!\n");
+            // currentviewer.showWarning("O ficheiro de diretores não existe!\n");
             createStaffFile(core.directors);
         }
         
         if ((flags.checkfile & Company.CHECK_PERFORMANCES) != Company.CHECK_PERFORMANCES) {
-            currentviewer.showWarning("O ficheiro de espetáculos não existe!\n");
+            // currentviewer.showWarning("O ficheiro de espetáculos não existe!\n");
             createPerformancesFile();
         }
     }
@@ -357,6 +357,11 @@ public class Program extends Controller {
             this.currentviewer.loadViewer();
             assignFiles();
             checkFilesIntegrity();
+            if (!core.loadAll()) {
+                currentviewer.showWarning(ERRMSG_LOADALL);
+            }
+            
+            /*
             if (!core.loadCompanyInfo())
                 currentviewer.showError("Ficheiro de informação da Companhia corrompido.\n");
             if (!core.loadSingers())
@@ -367,6 +372,7 @@ public class Program extends Controller {
                 currentviewer.showError("Ficheiro de diretores corrompido.\n");
             if (!core.loadPerformances())
                 currentviewer.showError("Ficheiro de espetáculos corrompido.\n");
+            */
             
             this.currentviewer.launchViewer(args);
         }
