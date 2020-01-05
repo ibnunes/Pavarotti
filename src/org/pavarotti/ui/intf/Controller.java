@@ -32,6 +32,7 @@ public abstract class Controller {
     // Controller initialization and application startup
     public abstract void launch(String[] args) throws Exception;
     public abstract void stop() throws Exception;
+    public abstract void emergencyStop();
     public abstract void refresh() throws Exception;
     public abstract void bindViewer(Viewer viewer);
     public abstract Viewer getViewer(int index) throws IndexOutOfBoundsException;

@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  * @author Ovelhas do Presépio
  */
 public class Pavarotti {
-    private static final Version DEFAULT_VERSION = new Version(1, 0, 4, Version.Stage.Final);
+    private static final Version DEFAULT_VERSION = new Version(1, 0, 5, Version.Stage.Final);
     private static Program app;
     
     /**
@@ -54,6 +54,7 @@ public class Pavarotti {
             String msg = String.format("A fatal error has occurred!\n%s: %s\n", e.getClass(), e.getMessage());
             System.out.println(msg);
             JOptionPane.showMessageDialog( null, msg, "Pavarotti " + VERSION, JOptionPane.ERROR_MESSAGE );
+            app.emergencyStop();
         }
     }
     

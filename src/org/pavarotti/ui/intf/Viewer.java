@@ -23,6 +23,7 @@ package org.pavarotti.ui.intf;
 public interface Viewer {
     abstract void loadViewer();
     abstract void launchViewer(String[] args) throws Exception;
+    abstract void emergencyStop();
     abstract void bindController(Controller controller);
     abstract void showHelp();
     abstract void showAbout();

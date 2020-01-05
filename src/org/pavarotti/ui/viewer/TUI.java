@@ -261,6 +261,11 @@ public class TUI implements Viewer {
         this.controller.stop();
     }
     
+    @Override
+    public void emergencyStop() {
+        System.exit(-1);
+    }
+    
     /**
      * @param controller the controller to bind
      */

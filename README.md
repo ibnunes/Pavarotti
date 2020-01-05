@@ -11,6 +11,10 @@ Software de gestão de uma Companhia de Ópera.
 
 ## Changelog
 
+### Version 1.0.5 (2020/01/04)
+
+* Adds method for emergency stop
+
 ### Version 1.0.4 (2020/01/04)
 
 * Adds `getDancers()` method to `Performance` class.

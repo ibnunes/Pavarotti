@@ -37,6 +37,11 @@ public class GUI implements Viewer {
     }
     
     @Override
+    public void emergencyStop() {
+        // TODO
+    }
+    
+    @Override
     public void bindController(Controller controller) {
         // TO-DO
     }

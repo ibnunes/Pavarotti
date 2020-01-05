@@ -381,6 +381,11 @@ public class Program extends Controller {
         this.refresh();
     }
     
+    @Override
+    public void emergencyStop() {
+        this.currentviewer.emergencyStop();
+    }
+    
     /**
      * Refreshes the files depending on the changed status reported by the state machine
      * @throws Exception 
